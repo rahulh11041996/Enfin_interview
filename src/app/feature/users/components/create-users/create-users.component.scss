@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.row {
+  flex-direction: row;
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.pad_24 {
+  padding: 2.4rem;
+}
+
+.pad_10 {
+  padding: 0.4rem;
+}

@@ -1,0 +1,46 @@
+<div [ngClass]="isEditMode ? 'pad_10' : 'pad_24'">
+    <h2>{{ isEditMode ? 'Edit User' : 'Create user'}}</h2>
+    <form [formGroup]="userForm" (ngSubmit)="updateUser()" class="grid">
+
+        <div class="flex">
+            <label>User Name *</label>
+            <input type="text" formControlName="name">
+        </div>
+
+        <div class="flex">
+            <label>Gender</label>
+            <div class="row">
+                <div>
+                    <input id="male" type="radio" name="gender" formControlName="gender" value="male" checked>
+                    <label class="custom-control-label" for="male">Male</label>
+                </div>
+                <div>
+                    <input id="female" type="radio" name="gender" formControlName="gender" value="female">
+                    <label class="custom-control-label" for="female">Female</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex">
+            <label>Email *</label>
+            <input type="text" formControlName="email">
+        </div>
+
+        <div class="flex">
+            <label>Status</label>
+            <div class="row">
+                <div>
+                    <input id="active" type="radio" name="status" formControlName="status" value="active" checked>
+                    <label for="active">Active</label>
+                </div>
+                <div>
+                    <input id="inactive" type="radio" name="status" formControlName="status" value="inactive">
+                    <label for="inactive">In Active</label>
+                </div>
+            </div>
+        </div>
+
+
+        <button [disabled]="!userForm.valid" type="submit">{{ isEditMode ? 'Edit User' : 'Update User'}}</button>
+    </form>
+</div>

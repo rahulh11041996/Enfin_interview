@@ -1,0 +1,45 @@
+<div *ngIf="(store$ | async) as store">
+    <enfin-create-users></enfin-create-users>
+    <table style="table-layout: fixed;width: 100%;border-collapse: collapse;">
+        <thead>
+            <tr style="background: lightskyblue;">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let users of store.users" style="height: 40px;">
+                <td>{{ users.id }}</td>
+                <td>{{ users.name }}</td>
+                <td>{{ users.gender }}</td>
+                <td>{{ users.email }}</td>
+                <td>{{ users.status }}</td>
+                <td>
+                    <button (click)="onEdit(users)">Edit</button>
+                    <button style="margin-left: 16px;" (click)="onDelete(users)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+</div>
+
+<ng-template #edituser>
+    <enfin-create-users [isEditMode]="true" [user]="editUser"></enfin-create-users>
+</ng-template>
+
+<ng-template #deleteUser>
+    <div>
+        <h4>Are you sure want to delete this user ?</h4>
+        <div style="display: flex; gap: 10px;">
+            <button (click)="deleteSelectedUser()">Yes</button>
+            <button (click)="closeModal()">Cancel</button>
+        </div>
+    </div>
+</ng-template>
